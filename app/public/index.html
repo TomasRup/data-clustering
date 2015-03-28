@@ -10,7 +10,7 @@
 		<script src="app.js"></script>
 		<script src="modules/graph/graphController.js"></script>
 		<script src="modules/graph/graphFactory.js"></script>
-		<script src="modules/menu/menuController.js"></script>
+		<script src="modules/ukwmenu/ukwMenuController.js"></script>
 		<script src="lib/jquery/jquery.min.js"></script>
 		<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
 		<script src="lib/bootstrap/js/bootstrap.min.js"></script>
@@ -31,7 +31,7 @@
 				</div>
 			</div>
 
-			<div data-ng-controller="MenuController as mc">
+			<div data-ng-controller="UKWMenuController as mc">
 				<div class="center-block">
 					<div class="col-lg-1">
 						<div class="input-group input-group-sm">
@@ -86,7 +86,7 @@
 				<div style="height: 50px;"></div>
 
 				<div class="center-block">
-					<button class="center-block btn btn-default" data-ng-click="mc.requestAndInitGraphData()">Unsupervised k-Windows</button>
+					<button class="center-block btn btn-default" data-ng-click="mc.requestAndInitGraphDataByUkw()">Unsupervised k-Windows</button>
 				</div>
 			</div>
 

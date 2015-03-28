@@ -46,10 +46,10 @@ var KWindow = (function() {
 
 		overlaps: function(otherW) {
 			if (!otherW) return false;
-			return (this.fromX <= otherW.toX
-				&& otherW.fromX <= this.toX
-				&& this.fromY <= otherW.toY
-				&& otherW.fromY <= this.toY);
+			return !(otherW.fromX > this.toX
+				|| otherW.toX < this.fromX
+				|| otherW.toY < this.fromY
+				|| otherW.fromY > this.toY);
 		},
 
 		numberOfPointsInOverlapment: function(otherW, points) {
@@ -128,7 +128,6 @@ var KWindow = (function() {
 
 		hasItemsInside: function(items) {
 			if (!items) return [];
-
 			var itemsInside = [];
 			
 			items.forEach(function(item) {

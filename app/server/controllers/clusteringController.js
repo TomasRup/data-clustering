@@ -2,14 +2,14 @@
 
 var ClusteringController = (function() {
 
-	var ClusteringService = require('../services/clusteringService');
+	var UKWClusteringService = require('../services/ukwClusteringService');
 	var Data = require('../dao/data');
 
 	function ClusteringController() {
-		this.clusteringService = new ClusteringService(Data);
+		this.ukwClusteringService = new UKWClusteringService(Data);
 	}
 
-	ClusteringController.prototype.getClusters = function(req, res) {
+	ClusteringController.prototype.getClustersByUkw = function(req, res) {
 		var a = req.query.a;
 		var oE = req.query.oE;
 		var oM = req.query.oM;
@@ -18,7 +18,7 @@ var ClusteringController = (function() {
 		var oS = req.query.oS;
 		var k = req.query.k;
 
-		this.clusteringService.getClustersUsingUKWAlgorithm(a, oE, oM, oC, oV, oS, k, function(jsonResponse) {
+		this.ukwClusteringService.getClustersUsingUKWAlgorithm(a, oE, oM, oC, oV, oS, k, function(jsonResponse) {
 			res.json(jsonResponse);
 		});
 	}

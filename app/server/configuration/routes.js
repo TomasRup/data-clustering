@@ -14,8 +14,8 @@ var Routes = (function() {
 	Routes.prototype.init = function() {
 		var that = this;
 
-		this.app.get('/clusters', function(req, res) { 
-			that.clusteringController.getClusters(req, res); 
+		this.app.get('/getClustersByUkw', function(req, res) { 
+			that.clusteringController.getClustersByUkw(req, res); 
 		});
 		
 		this.app.get('*', function(req, res) { 

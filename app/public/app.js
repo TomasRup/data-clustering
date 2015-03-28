@@ -5,11 +5,14 @@
 	.module('data-clustering', [
 		'graph.controller',
 		'graph.factory',
-		'menu.controller'
+		'ukwmenu.controller'
 	])
 	.constant('GRAPH_SETTINGS', {
 		'width': '900',
 		'height': '500' 
+	})
+	.constant('GRAPH_TYPES', {
+		ukw: 'ukw'
 	});
 
 })();

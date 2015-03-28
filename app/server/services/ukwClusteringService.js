@@ -1,18 +1,18 @@
 'use strict';
 
-var ClusteringService = (function() {
+var UKWClusteringService = (function() {
 
 	var KWindowsGraph = require('../models/kWindowsGraph');
 	var KWindow = require('../models/kWindow');
 	var Utils = require('../utils/utils');
 	var _ = require('underscore');
 
-	function ClusteringService(data) {
+	function UKWClusteringService(data) {
 		this.data = data;
 		this.utils = new Utils();
 	}	
 
-	ClusteringService.prototype = {
+	UKWClusteringService.prototype = {
 
 		determineInitialWindows: function(k, a) {
 			if (this.data.items.length < k) {
@@ -109,7 +109,6 @@ var ClusteringService = (function() {
 
 		merging: function(oM, oS, W) {
 			W.forEach(function(wJ) {
-				
 				if (wJ.isMarked()) return;
 				wJ.mark(_.indexOf(W, wJ));
 				
@@ -172,7 +171,8 @@ var ClusteringService = (function() {
 		}
 	};
 
-	return ClusteringService;
+	return UKWClusteringService
+;
 }());
 
-module.exports = ClusteringService;
+module.exports = UKWClusteringService;

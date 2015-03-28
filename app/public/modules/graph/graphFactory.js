@@ -1,14 +1,13 @@
 (function () {
     'use strict';
 
-    var Graph = function($http, $rootScope) {
+    var Graph = function($http, $rootScope, GRAPH_TYPES) {
     	var factory = {};
-        factory.rootScope = $rootScope;
 
-    	factory.initAndGetGraphData = function(a, oE, oM, oC, oV, oS, k) {
+    	factory.initAndGetGraphDataByUkw = function(a, oE, oM, oC, oV, oS, k) {
     		var that = this;
             return $http({
-                url: '/clusters', 
+                url: '/getClustersByUkw', 
                 method: 'GET',
                 params: {
                     a: a,
@@ -21,7 +20,10 @@
                 }
             })
             .then(function(response) {
-                that.rootScope.graphData = response.data;
+                $rootScope.graphData = {
+                    data: response.data,
+                    type: GRAPH_TYPES['ukw']
+                }
             });
     	};
     	

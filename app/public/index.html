@@ -8,9 +8,12 @@
 
 		<script src="lib/js/angular.min.js"></script>
 		<script src="app.js"></script>
+		<script src="modules/menu/menuController.js"></script>
 		<script src="modules/graph/graphController.js"></script>
 		<script src="modules/graph/graphFactory.js"></script>
 		<script src="modules/ukwmenu/ukwMenuController.js"></script>
+		<script src="modules/kmeansmenu/kMeansMenuController.js"></script>
+		<script src="modules/statistics/statisticsController.js"></script>
 		<script src="lib/jquery/jquery.min.js"></script>
 		<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
 		<script src="lib/bootstrap/js/bootstrap.min.js"></script>
@@ -19,76 +22,36 @@
 	</head>
 
 	<body>
-		<div class="container">		
 
-			<div style="height: 50px;"></div>
+		<div class="container" data-ng-controller="MenuController as mc">  
 
-			<div data-ng-controller="GraphController as gc" class="jumbotron center-block">
-				<div 
-					id="canvasContainer" 
-					class="center-block" 
-					style="width: {{ width }}px; height: {{ height }}px;">
+			<div style="height: 2em;"></div>
+			
+			<div>
+				<div class="pull-left btn-group" role="group">
+					<button 
+							data-ng-click="mc.switchTemplate('ukw')" 
+							type="button" 
+							class="btn btn-primary"
+						>Unsupervised k-Windows</button>
+					<button 
+							data-ng-click="mc.switchTemplate('kmeans')" 
+							type="button" 
+							class="btn btn-primary"
+						>k-Means</button>
+					<button 
+							data-ng-click="mc.switchTemplate('statistics')" 
+							type="button" 
+							class="btn btn-primary"
+						>Statistics</button>
 				</div>
+
+				<div class="pull-right text-right"><h6>&copy; Tomas Petras Rup&scaron;ys. Vilnius University. 2015.</h6></div>
 			</div>
 
-			<div data-ng-controller="UKWMenuController as mc">
-				<div class="center-block">
-					<div class="col-lg-1">
-						<div class="input-group input-group-sm">
-							<span class="input-group-addon" id="sizing-addon3">a</span>
-							<input data-ng-model="a" class="form-control">
-						</div>
-					</div>
+			<div style="clear:both; height: 1em;"></div>
 
-					<div class="col-lg-2">
-						<div class="input-group input-group-sm">
-							<span class="input-group-addon" id="sizing-addon3">oE</span>
-							<input data-ng-model="oE" class="form-control">
-						</div>
-					</div>
-
-					<div class="col-lg-2">
-						<div class="input-group input-group-sm">
-							<span class="input-group-addon" id="sizing-addon3">oM</span>
-							<input data-ng-model="oM" class="form-control">
-						</div>
-					</div>
-
-					<div class="col-lg-2">
-						<div class="input-group input-group-sm">
-							<span class="input-group-addon" id="sizing-addon3">oC</span>
-							<input data-ng-model="oC" class="form-control">
-						</div>
-					</div>
-
-					<div class="col-lg-2">
-						<div class="input-group input-group-sm">
-							<span class="input-group-addon" id="sizing-addon3">oV</span>
-							<input data-ng-model="oV" class="form-control">
-						</div>
-					</div>
-
-					<div class="col-lg-2">
-						<div class="input-group input-group-sm">
-							<span class="input-group-addon" id="sizing-addon3">oS</span>
-							<input data-ng-model="oS" class="form-control">
-						</div>
-					</div>
-
-					<div class="col-lg-1">
-						<div class="input-group input-group-sm">
-							<span class="input-group-addon" id="sizing-addon3">k</span>
-							<input data-ng-model="k" class="form-control">
-						</div>
-					</div>
-				</div>
-
-				<div style="height: 50px;"></div>
-
-				<div class="center-block">
-					<button class="center-block btn btn-default" data-ng-click="mc.requestAndInitGraphDataByUkw()">Unsupervised k-Windows</button>
-				</div>
-			</div>
+			<div data-ng-include="currentTemplate"></div>
 
 		</div>
 	</body>

@@ -1,0 +1,18 @@
+<div data-ng-controller="GraphController as gc" class="jumbotron center-block">
+	<div 
+		id="canvasContainer" 
+		class="center-block" 
+		style="width: {{ width }}px; height: {{ height }}px;">
+	</div>
+</div>
+
+<div data-ng-controller="KMeansMenuController as kmc">
+	<div class="col-lg-2">
+		<div class="input-group input-group-sm">
+			<span class="input-group-addon" id="sizing-addon3">k</span>
+			<input data-ng-model="k" class="form-control">
+		</div>
+	</div>
+
+	<button class="btn btn-default" data-ng-click="kmc.requestAndInitGraphDataByKMeans()">Get clusters</button>
+</div>

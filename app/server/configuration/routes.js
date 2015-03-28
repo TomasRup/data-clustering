@@ -17,6 +17,10 @@ var Routes = (function() {
 		this.app.get('/getClustersByUkw', function(req, res) { 
 			that.clusteringController.getClustersByUkw(req, res); 
 		});
+
+		this.app.get('/getClustersByKMeans', function(req, res) { 
+			that.clusteringController.getClustersByKMeans(req, res); 
+		});
 		
 		this.app.get('*', function(req, res) { 
 			that.navigationController.homePage(req, res)

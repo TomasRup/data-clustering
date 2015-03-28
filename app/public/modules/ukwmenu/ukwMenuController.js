@@ -15,10 +15,7 @@
     };
 
     UKWMenuController.prototype = {
-
     	requestAndInitGraphDataByUkw: function() {
-            var that = this;
-
             this.Graph.initAndGetGraphDataByUkw(
                 this.scope.a, 
                 this.scope.oE, 

@@ -1,0 +1,12 @@
+<div data-ng-controller="StatisticsController as sc">
+	<table class="table table-bordered">
+	<tr>
+		<th>Clustering algorithm</th>
+		<th>Time spent for clusterization (ms)</th>
+	</tr>
+  	<tr data-ng-repeat="item in tableData">
+  		<td>{{ item.type }}</td>
+  		<td>{{ item.timeSpent }}</td>
+  	</tr>
+	</table>
+</div>

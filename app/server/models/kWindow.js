@@ -23,8 +23,58 @@ var KWindow = (function() {
 			this.toY = centerPointY + halfLine;
 		},
 
+		isMarked: function() {
+			return this.marked;
+		},
+
+		mark: function(wId) {
+			this.marked = wId;
+		},
+
+		getAllMarkedFrom: function(W, wId) {
+			var allMarked = [];
+
+			W.forEach(function(w) {
+				var mark = w.isMarked();
+				if (mark === wId) {
+					allMarked.push(w);
+				} 
+			});
+
+			return allMarked;
+		},
+
+		overlaps: function(otherW) {
+			if (!otherW) return false;
+			return (this.fromX <= otherW.toX
+				&& otherW.fromX <= this.toX
+				&& this.fromY <= otherW.toY
+				&& otherW.fromY <= this.toY);
+		},
+
+		numberOfPointsInOverlapment: function(otherW, points) {
+			if (!this.overlaps(otherW)) return 0;
+
+			var pointsInThisW = this.hasItemsInside(points);
+			var pointsInOtherW = otherW.hasItemsInside(points);
+
+			var numberOfPoints = 0;
+
+			pointsInThisW.forEach(function(pointInThisW) {
+				pointsInOtherW.forEach(function(pointInOtherW) {
+
+					if (pointInThisW.x === pointInOtherW.x && pointInThisW.y === pointInOtherW.y) {
+						numberOfPoints = numberOfPoints + 1;
+					}
+
+				}, this);
+			}, this);
+
+			return numberOfPoints;
+		},
+
 		initialize: function(lineSize, centerPointX, centerPointY) {
-			if (!lineSize || !centerPointX || !centerPointY) {
+			if (_.isNaN(lineSize) || _.isNaN(centerPointX) || _.isNaN(centerPointY)) {
 				throw new Error("Uninitialized values: " + lineSize 
 					+ ", " + centerPointX + ", " + centerPointY + ".");
 			}
@@ -33,7 +83,7 @@ var KWindow = (function() {
 			this.initializeX(lineSize, centerPointX);
 			this.initializeY(lineSize, centerPointY);
 
-			this.marked = false;
+			this.marked = undefined;
 		},
 
 		enlargeX: function(percentage) {
@@ -77,13 +127,15 @@ var KWindow = (function() {
 		},
 
 		hasItemsInside: function(items) {
-			var itemsInside = [];
-			if (!items) return itemsInside;
+			if (!items) return [];
 
-			var that = this;
+			var itemsInside = [];
+			
 			items.forEach(function(item) {
-				if (that.isItemInside(item)) itemsInside.push(item);
-			});
+				if (this.isItemInside(item)) {
+					itemsInside.push(item);
+				}
+			}, this);
 
 			return itemsInside;
 		}

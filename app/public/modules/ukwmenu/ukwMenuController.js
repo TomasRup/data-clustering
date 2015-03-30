@@ -3,13 +3,13 @@
 
     var UKWMenuController = function($scope, Graph) {
     	this.scope = $scope;
-    	this.scope.a = 11;
-        this.scope.oE = 0.1;
-        this.scope.oM = 0.1;
-        this.scope.oC = 0.2;
-        this.scope.oV = 0.02;
-        this.scope.oS = 0.1;
-        this.scope.k = 5;
+    	this.scope.a = 9;
+        this.scope.oE = 0.9;
+        this.scope.oM = 0.9;
+        this.scope.oC = 0.9;
+        this.scope.oV = 0.9;
+        this.scope.oS = 0.9;
+        this.scope.k = 50;
         this.Graph = Graph;
     	return(this);
     };

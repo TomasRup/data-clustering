@@ -4,8 +4,8 @@ var assert = require('assert');
 var _ = require('underscore');
 
 var UKWClusteringService = require('./ukwClusteringService');
-var Utils = require('../utils/utils');
-var KWindow = require('../models/kWindow');
+var Utils = require('../../utils/utils');
+var KWindow = require('./kWindow');
 
 describe('Unsupervised k-Windows clustering service works fine', function() {
 
@@ -23,7 +23,7 @@ describe('Unsupervised k-Windows clustering service works fine', function() {
 	var utils = undefined;
 	var clusteringService = undefined;
 
-	beforeEach(function() {
+	before(function() {
 		utils = new Utils();
 
 		clusteringService = new UKWClusteringService({

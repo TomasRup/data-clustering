@@ -3,10 +3,14 @@
 	<tr>
 		<th>Clustering algorithm</th>
 		<th>Time spent for clusterization (ms)</th>
+		<th>Clusters found</th>
+		<th>Given k</th>
 	</tr>
   	<tr data-ng-repeat="item in tableData">
   		<td>{{ item.type }}</td>
   		<td>{{ item.timeSpent }}</td>
+  		<td>{{ item.clustersFound }}</td>
+  		<td>{{ item.postedK }}</td>
   	</tr>
 	</table>
 </div>

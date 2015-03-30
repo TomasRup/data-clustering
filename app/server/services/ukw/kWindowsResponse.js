@@ -1,8 +1,8 @@
 'use strict';
 
-var KWindowsGraph = (function() {
+var KWindowsResponse = (function() {
 
-	function KWindowsGraph(
+	function KWindowsResponse(
 			kWindows,
 			dataPoints,
 			minX,
@@ -21,7 +21,7 @@ var KWindowsGraph = (function() {
 		this.yName = yName || 'none';
 	}
 
-	return KWindowsGraph;
+	return KWindowsResponse;
 }());
 
-module.exports = KWindowsGraph;
+module.exports = KWindowsResponse;

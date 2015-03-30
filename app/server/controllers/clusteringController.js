@@ -2,8 +2,8 @@
 
 var ClusteringController = (function() {
 
-	var UKWClusteringService = require('../services/ukwClusteringService');
-	var KMeansClusteringService = require('../services/kMeansClusteringService');
+	var UKWClusteringService = require('../services/ukw/ukwClusteringService');
+	var KMeansClusteringService = require('../services/kmeans/kMeansClusteringService');
 	var Data = require('../dao/data');
 
 	function ClusteringController() {
@@ -37,10 +37,11 @@ var ClusteringController = (function() {
 
 		getClustersByKMeans: function(req, res) {
 			var k = req.query.k;
+			var maxIterations = req.query.maxIterations;
 
 			var that = this;
 			var timeStarted = new Date();
-			this.kMeansClusteringService.getClustersUsingKMeansAlgorithm(k, function(jsonResponse) {
+			this.kMeansClusteringService.getClustersUsingKMeansAlgorithm(k, maxIterations, function(jsonResponse) {
 				that.processResponse(timeStarted, res, jsonResponse);
 			});
 		}

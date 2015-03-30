@@ -71,8 +71,8 @@ var Data = {
 		maxX: 100,
 		minY: 1,
 		maxY: 100,
-		xName: 'Vienas duomuo',
-		yName: 'kitas duomuo'
+		xName: 'Some data',
+		yName: 'Other data'
 	}
 }
 

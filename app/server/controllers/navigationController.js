@@ -2,10 +2,13 @@
 
 var NavigationController = (function() {
 
-	function NavigationController() {}
+	function NavigationController() {
+	}
 
-	NavigationController.prototype.homePage = function(req, res) {
-		res.sendFile('/public/index.html');
+	NavigationController.prototype = {
+		homePage: function(req, res) {
+			res.sendFile('/public/index.html');
+		}
 	}
 
 	return NavigationController;

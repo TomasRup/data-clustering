@@ -23,37 +23,13 @@
 
 	<body>
 
-		<div class="container" data-ng-controller="MenuController as mc">  
-
-			<div style="height: 2em;"></div>
-			
-			<div>
-				<div class="pull-left btn-group" role="group">
-					<button 
-							data-ng-click="mc.switchTemplate('ukw')" 
-							type="button" 
-							class="btn btn-primary"
-						>Unsupervised k-Windows</button>
-					<button 
-							data-ng-click="mc.switchTemplate('kmeans')" 
-							type="button" 
-							class="btn btn-primary"
-						>k-Means</button>
-					<button 
-							data-ng-click="mc.switchTemplate('statistics')" 
-							type="button" 
-							class="btn btn-primary"
-						>Statistics</button>
-				</div>
-
-				<div class="pull-right text-right"><h6>&copy; Tomas Petras Rup&scaron;ys. Vilnius University. 2015.</h6></div>
-			</div>
-
+		<div style="height: 2em;"></div>
+		<div class="container" data-ng-controller="AppController as ac">  
+			<div data-ng-include="menuTemplate"></div>
 			<div style="clear:both; height: 1em;"></div>
-
 			<div data-ng-include="currentTemplate"></div>
-
 		</div>
+
 	</body>
 
 </html>

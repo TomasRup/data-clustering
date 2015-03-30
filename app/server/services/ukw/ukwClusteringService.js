@@ -2,10 +2,11 @@
 
 var UKWClusteringService = (function() {
 
-	var KWindowsGraph = require('../models/kWindowsGraph');
-	var KWindow = require('../models/kWindow');
-	var Utils = require('../utils/utils');
+	var Utils = require('../../utils/utils');
 	var _ = require('underscore');
+
+	var KWindowsResponse = require('./kWindowsResponse');
+	var KWindow = require('./kWindow');
 
 	function UKWClusteringService(data) {
 		this.data = data;
@@ -21,21 +22,20 @@ var UKWClusteringService = (function() {
 
 			var minSelection = 0;
 			var maxSelection = this.data.items.length - 1;
+			var selectedIds = [];
 
-			var selected = {};
-
-			while (Object.keys(selected).length < k) {
-				var randomItem = this.utils.getRandom(minSelection, maxSelection);
-				if (selected[randomItem] === undefined) { 
-					selected[randomItem] = this.data.items[randomItem]; 
+			while (selectedIds.length < k) {
+				var randomId = this.utils.getRandom(minSelection, maxSelection);
+				if (_.indexOf(selectedIds, randomId) === -1) { 
+					selectedIds.push(randomId); 
 				}
 			}
 
 			var W = [];
 			
-			for (var i in selected) {
+			for (var i in selectedIds) {
 				var kWin = new KWindow();
-				kWin.initialize(a, selected[i].x, selected[i].y);
+				kWin.initialize(a, this.data.items[selectedIds[i]].x, this.data.items[selectedIds[i]].y);
 				W.push(kWin); 
 			}
 
@@ -137,13 +137,6 @@ var UKWClusteringService = (function() {
 		},
 
 		getClustersUsingUKWAlgorithm: function(a, oE, oM, oC, oV, oS, k, next) {	
-			var minX = this.data.metadata.minX;
-			var maxX = this.data.metadata.maxX;
-			var minY = this.data.metadata.minY;
-			var maxY = this.data.metadata.maxY;
-			var xName = this.data.metadata.xName;
-			var yName = this.data.metadata.yName;
-
 			var W = this.determineInitialWindows(k, a);
 			
 			for (var w in W) {
@@ -157,22 +150,20 @@ var UKWClusteringService = (function() {
 				this.merging(oM, oS, W);
 			}
 
-			var graph = new KWindowsGraph(
+			var response = new KWindowsResponse(
 				W,
 				this.data.items,
-				minX,
-				maxX,
-				minY,
-				maxY,
-				xName,
-				yName);
-
-			next(graph);			
+				this.data.metadata.minX,
+				this.data.metadata.maxX,
+				this.data.metadata.minY,
+				this.data.metadata.maxY,
+				this.data.metadata.xName,
+				this.data.metadata.yName);
+			next(response);			
 		}
 	};
 
-	return UKWClusteringService
-;
+	return UKWClusteringService;
 }());
 
 module.exports = UKWClusteringService;

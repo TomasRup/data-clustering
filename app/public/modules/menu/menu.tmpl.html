@@ -1,0 +1,23 @@
+<div data-ng-controller="MenuController as mc">			
+	<div>
+		<div class="pull-left btn-group" role="group">
+			<button 
+					data-ng-click="mc.switchTemplate('ukw')" 
+					type="button" 
+					class="btn btn-primary"
+				><span class="glyphicon glyphicon-th" aria-hidden="true"></span>&nbsp;&nbsp;Unsupervised k-Windows</button>
+			<button 
+					data-ng-click="mc.switchTemplate('kmeans')" 
+					type="button" 
+					class="btn btn-primary"
+				><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>&nbsp;&nbsp;k-Means</button>
+			<button 
+					data-ng-click="mc.switchTemplate('statistics')" 
+					type="button" 
+					class="btn btn-primary"
+				><span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp;&nbsp;Statistics</button>
+		</div>
+
+		<div class="pull-right text-right"><h6>&copy; Tomas Petras Rup&scaron;ys. Vilnius University. 2015.</h6></div>
+	</div>
+</div>

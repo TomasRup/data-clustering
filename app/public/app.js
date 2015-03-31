@@ -9,6 +9,7 @@
 		'ukwmenu.controller',
 		'kmeansmenu.controller',
 		'statistics.controller',
+		'tester.controller'
 	])
 	.constant('GRAPH_SETTINGS', {
 		'width': '900',
@@ -22,7 +23,8 @@
         ukw: 'modules/ukwmenu/ukw.tmpl.html',
         kmeans: 'modules/kmeansmenu/kmeans.tmpl.html',
         statistics: 'modules/statistics/statistics.tmpl.html',
-        menu: 'modules/menu/menu.tmpl.html'
+        menu: 'modules/menu/menu.tmpl.html',
+        tester: 'modules/tester/tester.tmpl.html'
 	})
 	.controller('AppController', ['$scope', '$rootScope', 'TEMPLATES', function($scope, $rootScope, TEMPLATES) {
 		$scope.menuTemplate = TEMPLATES['menu'];

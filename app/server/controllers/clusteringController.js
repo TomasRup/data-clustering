@@ -7,8 +7,9 @@ var ClusteringController = (function() {
 	var Data = require('../dao/data');
 
 	function ClusteringController() {
-		this.ukwClusteringService = new UKWClusteringService(Data);
-		this.kMeansClusteringService = new KMeansClusteringService(Data);
+		var data = new Data().get();
+		this.ukwClusteringService = new UKWClusteringService(data);
+		this.kMeansClusteringService = new KMeansClusteringService(data);
 	}
 
 	ClusteringController.prototype = {

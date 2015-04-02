@@ -12,8 +12,9 @@
 		'tester.controller'
 	])
 	.constant('GRAPH_SETTINGS', {
-		'width': '900',
-		'height': '500' 
+		'width': 900,
+		'height': 600,
+		'minimizer': 1
 	})
 	.constant('GRAPH_TYPES', {
 		ukw: 'Unsupervised k-Windows',

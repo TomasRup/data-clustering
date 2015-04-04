@@ -1,60 +1,61 @@
-<div data-ng-include="'modules/graph/graph.tmpl.html'"></div>
-
 <div data-ng-controller="UKWMenuController as mc">
+
+	<div data-ng-include="TEMPLATES['graph']"></div>
+
 	<div class="center-block">
-		<div class="col-lg-1">
-			<div class="input-group input-group-sm">
-				<span class="input-group-addon" id="sizing-addon3">a</span>
-				<input data-ng-model="a" class="form-control">
-			</div>
-		</div>
+		<div class="col-lg-4" data-ng-include="TEMPLATES['dataSelection']"></div>
+		<button class="col-lg-5 btn btn-default" data-ng-click="mc.requestAndInitGraphDataByUkw()">Get clusters</button>
+	</div>
 
-		<div class="col-lg-2">
-			<div class="input-group input-group-sm">
-				<span class="input-group-addon" id="sizing-addon3">oE</span>
-				<input data-ng-model="oE" class="form-control">
-			</div>
-		</div>
+	<div style="height: 4em;"></div>
 
-		<div class="col-lg-2">
-			<div class="input-group input-group-sm">
-				<span class="input-group-addon" id="sizing-addon3">oM</span>
-				<input data-ng-model="oM" class="form-control">
-			</div>
-		</div>
-
-		<div class="col-lg-2">
-			<div class="input-group input-group-sm">
-				<span class="input-group-addon" id="sizing-addon3">oC</span>
-				<input data-ng-model="oC" class="form-control">
-			</div>
-		</div>
-
-		<div class="col-lg-2">
-			<div class="input-group input-group-sm">
-				<span class="input-group-addon" id="sizing-addon3">oV</span>
-				<input data-ng-model="oV" class="form-control">
-			</div>
-		</div>
-
-		<div class="col-lg-2">
-			<div class="input-group input-group-sm">
-				<span class="input-group-addon" id="sizing-addon3">oS</span>
-				<input data-ng-model="oS" class="form-control">
-			</div>
-		</div>
-
-		<div class="col-lg-1">
-			<div class="input-group input-group-sm">
-				<span class="input-group-addon" id="sizing-addon3">k</span>
-				<input data-ng-model="k" class="form-control">
-			</div>
+	<div class="col-lg-2">
+		<div class="input-group input-group-sm">
+			<span class="input-group-addon" id="sizing-addon3">a</span>
+			<input data-ng-model="a" class="form-control">
 		</div>
 	</div>
 
-	<div style="height: 3em;"></div>
-
-	<div class="center-block">
-		<button class="center-block btn btn-default" data-ng-click="mc.requestAndInitGraphDataByUkw()">Get clusters</button>
+	<div class="col-lg-1">
+		<div class="input-group input-group-sm">
+			<span class="input-group-addon" id="sizing-addon3">oE</span>
+			<input data-ng-model="oE" class="form-control">
+		</div>
 	</div>
+
+	<div class="col-lg-2">
+		<div class="input-group input-group-sm">
+			<span class="input-group-addon" id="sizing-addon3">oM</span>
+			<input data-ng-model="oM" class="form-control">
+		</div>
+	</div>
+
+	<div class="col-lg-2">
+		<div class="input-group input-group-sm">
+			<span class="input-group-addon" id="sizing-addon3">oC</span>
+			<input data-ng-model="oC" class="form-control">
+		</div>
+	</div>
+
+	<div class="col-lg-2">
+		<div class="input-group input-group-sm">
+			<span class="input-group-addon" id="sizing-addon3">oV</span>
+			<input data-ng-model="oV" class="form-control">
+		</div>
+	</div>
+
+	<div class="col-lg-2">
+		<div class="input-group input-group-sm">
+			<span class="input-group-addon" id="sizing-addon3">oS</span>
+			<input data-ng-model="oS" class="form-control">
+		</div>
+	</div>
+
+	<div class="col-lg-1">
+		<div class="input-group input-group-sm">
+			<span class="input-group-addon" id="sizing-addon3">k</span>
+			<input data-ng-model="k" class="form-control">
+		</div>
+	</div>
+
 </div>

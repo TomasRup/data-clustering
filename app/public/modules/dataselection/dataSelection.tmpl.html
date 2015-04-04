@@ -1,0 +1,11 @@
+<div class="btn-group dropup" data-ng-controller="DataSelectionController as dsc">
+  
+    <select 
+        name="Select data set..."
+        class="btn btn-default" 
+        data-ng-options="k as v for (k, v) in DATA_NAMES" 
+        data-ng-model="selectedData" 
+        data-ng-change="dsc.initDataSelection()">
+    </select>
+
+</div>

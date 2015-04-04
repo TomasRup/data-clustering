@@ -6,43 +6,28 @@ var _ = require('underscore');
 var UKWClusteringService = require('./ukwClusteringService');
 var Utils = require('../../utils/utils');
 var KWindow = require('./kWindow');
+var DataFactory = require('../../dao/dataFactory');
 
 describe('Unsupervised k-Windows clustering service works fine', function() {
 
-	var min = 0;
-	var max = 100;
-	var items = [
-		{x: 1, y: 1},
-		{x: 2, y: 2},
-		{x: 3, y: 3},
-		{x: 97, y: 97},
-		{x: 98, y: 98},
-		{x: 99, y: 99}
-	];
-
 	var utils = undefined;
 	var clusteringService = undefined;
+	var data = undefined
 
 	before(function() {
 		utils = new Utils();
-
-		clusteringService = new UKWClusteringService({
-			items: items,
-			metadata: {
-				minX: min, maxX: max,
-				minY: min, maxY: max,
-				xName: 'Test X', yName: 'Test Y'
-			}
-		});
+		data = new DataFactory().get('test');
+		clusteringService = new UKWClusteringService(data);
 	});
 
 	describe('determineInitialWindows', function() {
 		
-		var k = items.length - 1;
+		var k = undefined;
 		var a = 5;
 		var W = undefined;
 
 		beforeEach(function() {
+			k = clusteringService.data.items.length - 1;
 			W = clusteringService.determineInitialWindows(k, a);
 		});
 

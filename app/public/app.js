@@ -9,7 +9,8 @@
 		'ukwmenu.controller',
 		'kmeansmenu.controller',
 		'statistics.controller',
-		'tester.controller'
+		'tester.controller',
+		'dataselection.controller'
 	])
 	.constant('GRAPH_SETTINGS', {
 		'width': 900,
@@ -25,7 +26,13 @@
         kmeans: 'modules/kmeansmenu/kmeans.tmpl.html',
         statistics: 'modules/statistics/statistics.tmpl.html',
         menu: 'modules/menu/menu.tmpl.html',
-        tester: 'modules/tester/tester.tmpl.html'
+        tester: 'modules/tester/tester.tmpl.html',
+        graph: 'modules/graph/graph.tmpl.html',
+        dataSelection: 'modules/dataSelection/dataSelection.tmpl.html'
+	})
+	.constant('DATA_NAMES', {
+		forex: 'Forex Data: EUR/USD and EUR/GBP',
+		planetary: 'planetary'
 	})
 	.controller('AppController', ['$scope', '$rootScope', 'TEMPLATES', function($scope, $rootScope, TEMPLATES) {
 		$scope.menuTemplate = TEMPLATES['menu'];

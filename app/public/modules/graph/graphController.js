@@ -125,8 +125,8 @@
                 this.paper.rect(
                     (centerPoint.x * this.xParticle) - this.moveLeftBy + this.paddingFromAxis,
                     (centerPoint.y * this.yParticle) - this.moveUpBy + this.paddingFromAxis,
-                    this.pointSize * 2,
-                    this.pointSize * 2);
+                    this.pointSize * 6,
+                    this.pointSize * 6);
                 set = this.paper.setFinish();
                 set.attr({
                     'fill': color,

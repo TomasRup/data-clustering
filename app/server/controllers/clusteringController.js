@@ -2,17 +2,18 @@
 
 var ClusteringController = (function() {
 
+	var DataFactory = require('../dao/dataFactory');
 	var UKWClusteringService = require('../services/ukw/ukwClusteringService');
 	var KMeansClusteringService = require('../services/kmeans/kMeansClusteringService');
-	var Data = require('../dao/data');
 
 	function ClusteringController() {
-		var data = new Data().get();
-		this.ukwClusteringService = new UKWClusteringService(data);
-		this.kMeansClusteringService = new KMeansClusteringService(data);
+		this.dataFactory = new DataFactory();
+		this.ukwClusteringService = undefined;
+		this.kMeansClusteringService = undefined;
 	}
 
 	ClusteringController.prototype = {
+
 		processResponse: function(timeStarted, res, jsonResponse) {
 			var timeCompleted = new Date();
 			var timeSpent = timeCompleted.getTime() - timeStarted.getTime();
@@ -29,8 +30,12 @@ var ClusteringController = (function() {
 			var oS = req.query.oS;
 			var k = req.query.k;
 
+			var dataName = req.query.dataName;
+			this.ukwClusteringService = new UKWClusteringService(this.dataFactory.get(dataName));
+
 			var that = this;
 			var timeStarted = new Date();
+
 			this.ukwClusteringService.getClustersUsingUKWAlgorithm(a, oE, oM, oC, oV, oS, k, function(jsonResponse) {
 				that.processResponse(timeStarted, res, jsonResponse);
 			});
@@ -40,8 +45,12 @@ var ClusteringController = (function() {
 			var k = req.query.k;
 			var maxIterations = req.query.maxIterations;
 
+			var dataName = req.query.dataName;
+			this.kMeansClusteringService = new KMeansClusteringService(this.dataFactory.get(dataName));
+
 			var that = this;
 			var timeStarted = new Date();
+
 			this.kMeansClusteringService.getClustersUsingKMeansAlgorithm(k, maxIterations, function(jsonResponse) {
 				that.processResponse(timeStarted, res, jsonResponse);
 			});

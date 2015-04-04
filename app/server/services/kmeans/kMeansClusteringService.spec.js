@@ -6,36 +6,20 @@ var _ = require('underscore');
 var KMeansClusteringService = require('./kMeansClusteringService');
 var KMeansCentroid = require('./kMeansCentroid');
 var Utils = require('../../utils/utils');
+var DataFactory = require('../../dao/dataFactory');
 
 describe('k-Means clustering service works fine', function() {
 	
 	var k = 2;
 
-	var min = 0;
-	var max = 100;
-	var items = [
-		{x: 1, y: 1},
-		{x: 2, y: 2},
-		{x: 3, y: 3},
-		{x: 97, y: 97},
-		{x: 98, y: 98},
-		{x: 99, y: 99}
-	];
-
 	var utils = undefined;
 	var clusteringService = undefined;
+	var data = undefined;
 
 	before(function() {
 		utils = new Utils();
-
-		clusteringService = new KMeansClusteringService({
-			items: items,
-			metadata: {
-				minX: min, maxX: max,
-				minY: min, maxY: max,
-				xName: 'Test X', yName: 'Test Y'
-			}
-		});
+		data = new DataFactory().get('test');
+		clusteringService = new KMeansClusteringService(data);
 	});
 
 	describe('initRandomCentroids', function() {
@@ -52,7 +36,7 @@ describe('k-Means clustering service works fine', function() {
 		it('should have centroids which are from items list', function() {
 			var centroidsFromItems = 0;
 			centroids.forEach(function(centroid) {
-				items.forEach(function(item) {
+				clusteringService.data.items.forEach(function(item) {
 					if (centroid.centerPoint.x === item.x 
 							&& centroid.centerPoint.y === item.y) {
 						centroidsFromItems++;

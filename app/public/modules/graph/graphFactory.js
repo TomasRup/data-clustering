@@ -34,19 +34,19 @@
             });
         };
 
-    	factory.initAndGetGraphDataByUkw = function(a, oE, oM, oC, oV, oS, k) {
+    	factory.initAndGetGraphDataByUkw = function(a, oE, oM, oC, oV, oS, k, dataName) {
             return $http({
                 url: '/getClustersByUkw', 
                 method: 'GET',
-                params: { a: a, oE: oE, oM: oM, oC: oC, oV: oV, oS: oS, k: k }
+                params: { a: a, oE: oE, oM: oM, oC: oC, oV: oV, oS: oS, k: k, dataName: dataName }
             }).then(function(response) { postGraphDataGet(GRAPH_TYPES['ukw'], response, k); });
     	};
 
-        factory.initAndGetGraphDataByKMeans = function(k, maxIterations) {
+        factory.initAndGetGraphDataByKMeans = function(k, maxIterations, dataName) {
             return $http({
                 url: '/getClustersByKMeans', 
                 method: 'GET',
-                params: { k: k, maxIterations: maxIterations }
+                params: { k: k, maxIterations: maxIterations, dataName: dataName }
             }).then(function(response) { postGraphDataGet(GRAPH_TYPES['kmeans'], response, k); });
         };
     	

@@ -9,6 +9,7 @@ var UKWClusteringService = (function() {
 	var KWindow = require('./kWindow');
 
 	function UKWClusteringService(data) {
+		if (!data) throw new Error('Data is not defined!');
 		this.data = data;
 		this.utils = new Utils();
 	}	

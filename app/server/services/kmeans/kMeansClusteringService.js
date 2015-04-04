@@ -9,6 +9,7 @@ var KMeansClusteringService = (function() {
 	var KMeansResponse = require('./kMeansResponse');
 
 	function KMeansClusteringService(data) {
+		if (!data) throw new Error('Data is not defined!');
 		this.data = data;
 		this.utils = new Utils();
 	}	

@@ -11,11 +11,9 @@
     	return(this);
     };
 
-    KMeansMenuController.prototype = {
-        requestAndInitGraphDataByKMeans: function() {
-            this.Graph.initAndGetGraphDataByKMeans(this.scope.k, this.scope.maxIterations, this.rootScope.dataSelection);
-        }
-    };
+    KMeansMenuController.prototype.requestAndInitGraphDataByKMeans = function() {
+        this.Graph.initAndGetGraphDataByKMeans(this.scope.k, this.scope.maxIterations, this.rootScope.dataSelection);
+    }
 
     angular
     	.module('kmeansmenu.controller', [])

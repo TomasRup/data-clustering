@@ -11,11 +11,9 @@
         return(that);
     };
 
-    DataSelectionController.prototype = {
-        initDataSelection: function() {
-            if (!this.scope.selectedData) return;
-            this.rootScope.dataSelection = this.scope.selectedData;
-        }
+    DataSelectionController.prototype.initDataSelection = function() {
+        if (!this.scope.selectedData) return;
+        this.rootScope.dataSelection = this.scope.selectedData;
     }
 
     angular

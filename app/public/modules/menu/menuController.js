@@ -9,15 +9,11 @@
         return(that);
     };
 
-    MenuController.prototype = {
-
-        switchTemplate: function(name) {
-            if (!this.scope.TEMPLATES[name]) return;
-            this.rootScope.currentTemplate = this.scope.TEMPLATES[name];
-            this.rootScope.graphData = undefined;
-        }
-
-    };
+    MenuController.prototype.switchTemplate = function(name) {
+        if (!this.scope.TEMPLATES[name]) return;
+        this.rootScope.currentTemplate = this.scope.TEMPLATES[name];
+        this.rootScope.graphData = undefined;
+    }
 
     angular
     	.module('menu.controller', [])

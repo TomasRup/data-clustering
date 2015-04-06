@@ -5,11 +5,8 @@
         var that = this;
         that.rootScope = $rootScope;
         that.scope = $scope;
+        that.scope.dataLoaded = false;
         return(that);
-    };
-
-    TesterController.prototype = {
-
     };
 
     angular

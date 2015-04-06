@@ -2,23 +2,25 @@
 
 var KWindowsResponse = (function() {
 
-	function KWindowsResponse(
-			kWindows,
-			dataPoints,
-			minX,
-			maxX,
-			minY,
-			maxY,
-			xName,
-			yName) {
-		this.kWindows = kWindows || [];
-		this.dataPoints = dataPoints || [];
-		this.minX = minX || 0;
-		this.maxX = maxX || 0;
-		this.minY = minY || 0;
-		this.maxY = maxY || 0;
-		this.xName = xName || 'none';
-		this.yName = yName || 'none';
+	var Util = require('util');
+	var Response = require('../response');
+
+	function KWindowsResponse() {
+		KWindowsResponse.super_.call(this);
+		this.kWindows = [];
+		this.dataPoints = [];
+	}
+
+	Util.inherits(KWindowsResponse, Response);
+
+	KWindowsResponse.prototype.withKWindows = function(kWindows) {
+		this.kWindows = kWindows;
+		return this;
+	}
+
+	KWindowsResponse.prototype.withDataPoints = function(dataPoints) {
+		this.dataPoints = dataPoints;
+		return this;
 	}
 
 	return KWindowsResponse;

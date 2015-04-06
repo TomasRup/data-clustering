@@ -3,7 +3,7 @@
 var ForexData = (function() {
 
 	var Util = require('util');
-	var Data = require('./data');
+	var Data = require('../data');
 
 	function ForexData() {
 		ForexData.super_.call(this);

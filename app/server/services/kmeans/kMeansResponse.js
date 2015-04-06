@@ -2,21 +2,19 @@
 
 var KMeansResponse = (function() {
 
-	function KMeansResponse(
-			centroidsWithPoints,
-			minX,
-			maxX,
-			minY,
-			maxY,
-			xName,
-			yName) {
-		this.centroidsWithPoints = centroidsWithPoints || [];
-		this.minX = minX || 0;
-		this.maxX = maxX || 0;
-		this.minY = minY || 0;
-		this.maxY = maxY || 0;
-		this.xName = xName || 'none';
-		this.yName = yName || 'none';
+	var Util = require('util');
+	var Response = require('../response');
+
+	function KMeansResponse() {
+		KMeansResponse.super_.call(this);
+		this.centroidsWithPoints = [];
+	}
+
+	Util.inherits(KMeansResponse, Response);
+
+	KMeansResponse.prototype.withCentroidsWithPoints = function(centroidsWithPoints) {
+		this.centroidsWithPoints = centroidsWithPoints;
+		return this;
 	}
 
 	return KMeansResponse;

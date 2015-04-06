@@ -2,8 +2,8 @@
 
 var Routes = (function() {
 
-	var NavigationController = require('../controllers/navigationController');
-	var ClusteringController = require('../controllers/clusteringController');
+	var NavigationController = require('../controllers/navigation/navigationController');
+	var ClusteringController = require('../controllers/clustering/clusteringController');
 
 	function Routes(app) {
 		this.app = app;

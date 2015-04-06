@@ -4,9 +4,9 @@ var DataFactory = (function() {
 
 	var _ = require('underscore');
 
-	var ForexData = require('./forexData');
-	var PlanetaryData = require('./planetaryData');
-	var TestData = require('./testData');
+	var ForexData = require('./forex/forexData');
+	var PlanetaryData = require('./planetary/planetaryData');
+	var TestData = require('./test/testData');
 
 	function DataFactory() {
 		this.forexData = new ForexData();

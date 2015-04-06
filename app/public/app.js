@@ -31,8 +31,8 @@
         dataSelection: 'modules/dataSelection/dataSelection.tmpl.html'
 	})
 	.constant('DATA_NAMES', {
-		forex: 'Forex Data: EUR/USD and EUR/GBP',
-		planetary: 'planetary'
+		forex: 'Forex: EUR/USD and EUR/GBP 2013-2014',
+		planetary: 'Planetary: Stellar Mass and Stellar Radius'
 	})
 	.controller('AppController', ['$scope', '$rootScope', 'TEMPLATES', function($scope, $rootScope, TEMPLATES) {
 		$scope.menuTemplate = TEMPLATES['menu'];

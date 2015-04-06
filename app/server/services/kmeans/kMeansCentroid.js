@@ -8,24 +8,20 @@ var KMeansCentroid = (function() {
 		this.centerPoint = undefined;
 	}
 
-	KMeansCentroid.prototype = {
-
-		initialize: function(centerPoint) {
-			if (_.isNaN(centerPoint.x) || _.isNaN(centerPoint.y)) {
-				return;
-			}
-			this.centerPoint = centerPoint;
-		},
-
-		equals: function(other) {
-			return (this.centerPoint.x === other.centerPoint.x
-				&& this.centerPoint.y === other.centerPoint.y);
-		},
-
-		distanceTo: function(point) {
-			return Math.sqrt(Math.pow(point.x - this.centerPoint.x, 2) + Math.pow(point.y - this.centerPoint.y, 2));
+	KMeansCentroid.prototype.initialize = function(centerPoint) {
+		if (_.isNaN(centerPoint.x) || _.isNaN(centerPoint.y)) {
+			return;
 		}
+		this.centerPoint = centerPoint;
+	}
 
+	KMeansCentroid.prototype.equals = function(other) {
+		return (this.centerPoint.x === other.centerPoint.x
+			&& this.centerPoint.y === other.centerPoint.y);
+	}
+
+	KMeansCentroid.prototype.distanceTo = function(point) {
+		return Math.sqrt(Math.pow(point.x - this.centerPoint.x, 2) + Math.pow(point.y - this.centerPoint.y, 2));
 	}
 
 	return KMeansCentroid;

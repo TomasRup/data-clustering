@@ -1,17 +1,28 @@
 (function () {
     'use strict';
 
-    var DataSelectionController = function($scope, $rootScope, DATA_NAMES) {
+    var DataSelectionController = function($scope, $rootScope, DataSelection) {
         var that = this;
         that.scope = $scope;
-        that.scope.selectedData = Object.keys(DATA_NAMES)[0];
-        that.scope.DATA_NAMES = DATA_NAMES;
+        that.scope.selectedData = null;
+        that.scope.selectionOptions = {};
         that.rootScope = $rootScope;
-        this.initDataSelection();
+        that.DataSelection = DataSelection;
+        that.initDataSelection();
         return(that);
     };
 
     DataSelectionController.prototype.initDataSelection = function() {
+        var that = this;
+        this.DataSelection.getSelections().then(function(response) {
+            var options = response.data;
+            that.scope.selectionOptions = options;
+            that.scope.selectedData = Object.keys(options)[0];
+            that.changeDataSelection();
+        });
+    }
+
+    DataSelectionController.prototype.changeDataSelection = function() {
         if (!this.scope.selectedData) return;
         this.rootScope.dataSelection = this.scope.selectedData;
     }

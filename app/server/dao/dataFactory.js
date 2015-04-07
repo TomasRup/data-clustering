@@ -9,19 +9,24 @@ var DataFactory = (function() {
 	var TestData = require('./test/testData');
 
 	function DataFactory() {
-		this.forexData = new ForexData();
-		this.planetaryData = new PlanetaryData();
-		this.testData = new TestData();
+		this.dataTypes = {
+			'forex': 	 new ForexData(),
+			'planetary': new PlanetaryData(),
+			'test':  	 new TestData()
+		};
 	}
 
-	DataFactory.prototype = {
-		get: function(name) {
-			switch (name) {
-				case 'forex': 		return this.forexData.get();
-				case 'planetary': 	return this.planetaryData.get();
-				case 'test': 		return this.testData.get();
-				default: 			return new Error('The given data identifier is not defined!');
-			}
+	DataFactory.prototype.getAllTypes = function() {
+		var typesMap = _.mapObject(this.dataTypes, function(value, key) { return value.getTitle(); });
+		return typesMap;
+	}
+
+	DataFactory.prototype.get = function(name) {
+		switch (name) {
+			case 'forex': 		return this.dataTypes['forex'].get();
+			case 'planetary': 	return this.dataTypes['planetary'].get();
+			case 'test': 		return this.dataTypes['test'].get();
+			default: 			return new Error('The given data identifier is not defined!');
 		}
 	}
 

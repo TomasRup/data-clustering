@@ -30,6 +30,11 @@ var Data = (function() {
 		return _.max(allY);
 	}
 
+	Data.prototype.getTitle = function() {
+		var title = this.xName + ' - ' + this.yName;
+		return title;
+	}
+
 	Data.prototype.get = function() {
 		return {
 			items: this.items,
@@ -40,7 +45,7 @@ var Data = (function() {
 				maxY: this.getMaxY(),
 				xName: this.xName,
 				yName: this.yName,
-				title: this.xName + ' - ' + this.yName
+				title: this.getTitle()
 			}
 		};
 	}

@@ -10,7 +10,8 @@
 		'kmeansmenu.controller',
 		'statistics.controller',
 		'tester.controller',
-		'dataselection.controller'
+		'dataselection.controller',
+		'dataselection.factory'
 	])
 	.constant('GRAPH_SETTINGS', {
 		'width': 900,
@@ -29,10 +30,6 @@
         tester: 'modules/tester/tester.tmpl.html',
         graph: 'modules/graph/graph.tmpl.html',
         dataSelection: 'modules/dataSelection/dataSelection.tmpl.html'
-	})
-	.constant('DATA_NAMES', {
-		forex: 'Forex: EUR/USD and EUR/GBP 2013-2014',
-		planetary: 'Planetary: Stellar Mass and Stellar Radius'
 	})
 	.controller('AppController', ['$scope', '$rootScope', 'TEMPLATES', function($scope, $rootScope, TEMPLATES) {
 		$scope.menuTemplate = TEMPLATES['menu'];

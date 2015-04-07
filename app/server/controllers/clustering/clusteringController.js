@@ -18,6 +18,10 @@ var ClusteringController = (function() {
 
 	Util.inherits(ClusteringController, Controller);
 
+	ClusteringController.prototype.getDataTypes = function(req, res) {
+		res.json(this.dataFactory.getAllTypes());
+	}
+
 	ClusteringController.prototype.processResponse = function(timeStarted, res, jsonResponse) {
 		var timeCompleted = new Date();
 		var timeSpent = timeCompleted.getTime() - timeStarted.getTime();

@@ -7,8 +7,8 @@ var PlanetaryData = (function() {
 
 	function PlanetaryData() {
 		PlanetaryData.super_.call(this);
-		this.xName = 'Stellar Mass [Solar mass]';
-		this.yName = 'Stellar Radius [Solar radii]';
+		this.xName = 'Stellar Mass';
+		this.yName = 'Stellar Radius';
 		this.items = [
 			{'x': 1.23, 'y': 18.11, 'name': '4 UMa b'},
 			{'x': 1.70, 'y': 5.20, 'name': '6 Lyn b'},

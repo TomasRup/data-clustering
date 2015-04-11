@@ -6,9 +6,9 @@
     "node": "0.12.x"
   },
   "scripts": {
-    "preinstall": "npm test",
+    "prepublish": "npm test",
     "test": "mocha app/server/**/*.spec.js",
-    "start": "node app/server.js"
+    "web": "node app/server.js"
   },
   "dependencies": {
     "express": "~4.12.2",

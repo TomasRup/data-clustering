@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "main": "app/app.js",
   "scripts": {
-	"test": "mocha app/server/**/*.spec.js",
-  "main": "app/server.js"
+    "test": "mocha app/server/**/*.spec.js",
+    "start": "node app/server.js"
   },
   "dependencies": {
     "express": "~4.12.2",

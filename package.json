@@ -2,7 +2,11 @@
   "name": "data-clustering",
   "version": "0.0.1",
   "main": "app/app.js",
+  "engines": {
+    "node": "0.12.x"
+  },
   "scripts": {
+    "preinstall": "npm test",
     "test": "mocha app/server/**/*.spec.js",
     "start": "node app/server.js"
   },

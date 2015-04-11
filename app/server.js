@@ -17,4 +17,4 @@ var routes = new Routes(app);
 routes.init();
 
 // start up
-app.listen(2222);
+app.listen(process.env.PORT || 2222);

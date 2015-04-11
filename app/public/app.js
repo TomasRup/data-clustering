@@ -29,7 +29,7 @@
         menu: 'modules/menu/menu.tmpl.html',
         tester: 'modules/tester/tester.tmpl.html',
         graph: 'modules/graph/graph.tmpl.html',
-        dataSelection: 'modules/dataSelection/dataSelection.tmpl.html'
+        dataSelection: 'modules/dataselection/dataSelection.tmpl.html'
 	})
 	.controller('AppController', ['$scope', '$rootScope', 'TEMPLATES', function($scope, $rootScope, TEMPLATES) {
 		$scope.menuTemplate = TEMPLATES['menu'];

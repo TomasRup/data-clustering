@@ -13,7 +13,7 @@ var NavigationController = (function() {
 	Util.inherits(NavigationController, Controller);
 
 	NavigationController.prototype.homePage = function(req, res) {
-		res.sendFile('index.html');
+		res.sendFile('/index.html');
 	}
 
 	return NavigationController;

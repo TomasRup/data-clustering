@@ -1,16 +1,40 @@
 <div data-ng-controller="StatisticsController as sc">
+
 	<table class="table table-bordered">
-	<tr>
-		<th>Clustering algorithm</th>
-		<th>Time spent for clusterization (ms)</th>
-		<th>Clusters found</th>
-		<th>Given k</th>
-	</tr>
-  	<tr data-ng-repeat="item in tableData">
-  		<td>{{ item.type }}</td>
-  		<td>{{ item.timeSpent }}</td>
-  		<td>{{ item.clustersFound }}</td>
-  		<td>{{ item.postedK }}</td>
-  	</tr>
+		<tr>
+			<th>Clustering algorithm</th>
+			<th>Times launched</th>
+			<th>Average length (ms)</th>
+			<th>Median length (ms)</th>
+			<th>Average coverage (%)</th>
+			<th>Median coverage (%)</th>
+		</tr>
+		<tr data-ng-repeat="(k,v) in tableData.stats">
+			<td>{{ k }}</td>
+			<td>{{ v.timesLaunched }}</td>
+			<td>{{ v.lengthAverage }}</td>
+			<td>{{ v.lengthMedian }}</td>
+			<td>{{ v.averageObjectsInClusters }}</td>
+			<td>{{ v.coverageMedian }}</td>
+		</tr>
+	</table>
+
+	<table class="table table-bordered">
+		<tr>
+			<th>No.</th>
+			<th>Clustering algorithm</th>
+			<th>Time spent for clusterization (ms)</th>
+			<th>Clusters found</th>
+			<th>Given k</th>
+			<th>Coverage</th>
+		</tr>
+	  	<tr data-ng-repeat="item in tableData">
+	  		<td>{{ tableData.indexOf(item) + 1 }}</td>
+	  		<td>{{ item.type }}</td>
+	  		<td>{{ item.timeSpent }}</td>
+	  		<td>{{ item.clustersFound }}</td>
+	  		<td>{{ item.postedK }}</td>
+	  		<td>{{ item.sumOfObjectsInClusters }}</td>
+	  	</tr>
 	</table>
 </div>

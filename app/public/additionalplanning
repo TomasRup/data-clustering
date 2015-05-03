@@ -1,0 +1,42 @@
+
+
+FRONTEND/BACKEND SEPARATION
+(8) Rename packages
+	DOD:
+		renamed client, packages,
+		oop-integration-client -> oop-core-domain,
+		e.g. lt.omnitel.core.domain.account.model/service
+		clients: lt.omnitel.cds.client,
+		no endfix "Model" (NO AccountModel
+
+
+(8) Move out CDS clients from all portlets
+	DOD: 
+		there is no portlet with CDS client 
+
+(16) Move out OC clients from all portlets
+	DOD: 
+		there is no portlet with OC client
+
+(12)  Move out CDS client tests from portlets
+	DOD:
+		tests moved out,
+		mock service
+
+(16)  Move out OC client tests from portlets
+	DOD:
+		tests moved out,
+		mock service
+
+(8) Move out to core-domain repository
+	DOD: 
+		new repo created,
+		code moved to new git repo,
+		make sure jenkins builds (new job).
+
+(8) Make it work
+	DOD: it all works
+
+(4) GitLab user groups fix
+	DOD: 
+		front, back teams fixing

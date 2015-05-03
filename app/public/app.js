@@ -9,7 +9,6 @@
 		'ukwmenu.controller',
 		'kmeansmenu.controller',
 		'statistics.controller',
-		'tester.controller',
 		'dataselection.controller',
 		'dataselection.factory'
 	])
@@ -27,7 +26,6 @@
         kmeans: 'modules/kmeansmenu/kmeans.tmpl.html',
         statistics: 'modules/statistics/statistics.tmpl.html',
         menu: 'modules/menu/menu.tmpl.html',
-        tester: 'modules/tester/tester.tmpl.html',
         graph: 'modules/graph/graph.tmpl.html',
         dataSelection: 'modules/dataselection/dataSelection.tmpl.html'
 	})

@@ -30,7 +30,8 @@
                 type: type, 
                 timeSpent: response.data.timeSpent,
                 clustersFound: getClustersFound(type, response),
-                postedK: postedKValue
+                postedK: postedKValue,
+                sumOfObjectsInClusters: response.data.clusterCoveragePercentage
             });
         };
 

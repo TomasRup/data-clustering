@@ -7,6 +7,8 @@ var Response = (function() {
 		this.maxX = 0;
 		this.minY = 0;
 		this.maxY = 0;
+		this.clusterCoveragePercentage = 0.00;
+		this.timeSpent = 0;
 		this.xName = 'none';
 		this.yName = 'none';
 		this.title = 'none';
@@ -29,6 +31,16 @@ var Response = (function() {
 
 	Response.prototype.withMaxY = function(y) {
 		this.maxY = y;
+		return this;
+	}
+
+	Response.prototype.withClusterCoveragePercentage = function(clusterCoveragePercentage) {
+		this.clusterCoveragePercentage = clusterCoveragePercentage;
+		return this;
+	}
+
+	Response.prototype.withTimeSpent = function(timeSpent) {
+		this.timeSpent = timeSpent;
 		return this;
 	}
 

@@ -138,7 +138,25 @@ var UKWClusteringService = (function() {
 		}, this);
 	}
 
+	UKWClusteringService.prototype.calculateClusterCoverage = function(W) {
+		var items = _.clone(this.data.items);
+
+		var sumOfObjectsInClusters = 0;
+		var totalSumOfObject = items.length;
+
+		W.forEach(function(w) {
+			sumOfObjectsInClusters = (sumOfObjectsInClusters 
+				+ w.amountOfItemsInside(
+					items,
+					function(item) { items = _.without(items, item); }));
+		}, this);
+
+		return (sumOfObjectsInClusters / totalSumOfObject * 100);
+	}
+
 	UKWClusteringService.prototype.getClustersUsingUKWAlgorithm = function(a, oE, oM, oC, oV, oS, k, next) {	
+		var timeStarted = new Date();
+
 		var W = this.determineInitialWindows(k, a);
 		
 		for (var w in W) {
@@ -152,12 +170,17 @@ var UKWClusteringService = (function() {
 			this.merging(oM, oS, W);
 		}
 
+		var timeCompleted = new Date();
+		var timeSpent = timeCompleted.getTime() - timeStarted.getTime();
+
 		var response = new KWindowsResponse();
 		response
 			.withMinX(this.data.metadata.minX)
 			.withMaxX(this.data.metadata.maxX)
 			.withMinY(this.data.metadata.minY)
 			.withMaxY(this.data.metadata.maxY)
+			.withClusterCoveragePercentage(this.calculateClusterCoverage(W))
+			.withTimeSpent(timeSpent)
 			.withXName(this.data.metadata.xName)
 			.withYName(this.data.metadata.yName)
 			.withTitle(this.data.metadata.title)

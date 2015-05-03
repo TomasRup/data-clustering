@@ -137,6 +137,20 @@ var KWindow = (function() {
 		return itemsInside;
 	}
 
+	KWindow.prototype.amountOfItemsInside = function(items, callbackForItemInside) {
+		if (!items) return 0;
+		var amountOfItemsInside = 0;
+
+		items.forEach(function(item) {
+			if (this.isItemInside(item)) {
+				amountOfItemsInside++;
+				callbackForItemInside(item);
+			}
+		}, this);
+
+		return amountOfItemsInside;
+	}
+
 	return KWindow;
 }());
 

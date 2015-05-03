@@ -23,13 +23,12 @@ var KMeansClusteringService = (function() {
 
 		do {
 			var randomPointId = this.utils.getRandom(0, this.data.items.length - 1);
-			if (_.contains(chosenIds, randomPointId)) continue;
-
-			var newCentroid = new KMeansCentroid();
-			newCentroid.initialize(this.data.items[randomPointId]);
-			randomCentroids.push(newCentroid);
-			chosenIds.push(randomPointId);
-
+			if (!_.contains(chosenIds, randomPointId)) {
+				var newCentroid = new KMeansCentroid();
+				newCentroid.initialize(this.data.items[randomPointId]);
+				randomCentroids.push(newCentroid);
+				chosenIds.push(randomPointId);
+			}
 		} while (randomCentroids.length < k);
 
 		return randomCentroids;
@@ -67,8 +66,8 @@ var KMeansClusteringService = (function() {
 		var newCentroidsList = [];
 
 		centroids.forEach(function(centroid) {
-			var centroidMatcher = _.matcher({ centroid: centroid });
-			var dataItemsOfCentroid = _.filter(this.data.items, centroidMatcher);
+			var dataItemsOfCentroid = _.filter(this.data.items, _.matcher({ centroid: centroid }));
+			if (dataItemsOfCentroid.length === 0) return;
 
 			var sumX = 0;
 			var sumY = 0;
@@ -106,6 +105,8 @@ var KMeansClusteringService = (function() {
 	}
 
 	KMeansClusteringService.prototype.getClustersUsingKMeansAlgorithm = function(k, maxIterations, next) {
+		var timeStarted = new Date();
+
 		this.data.items.forEach(function(dataItem) {
 			dataItem.centroid = {};
 		});
@@ -122,12 +123,17 @@ var KMeansClusteringService = (function() {
 			centroids = this.recalculateCentroidsAndReturn(centroids);
 		}
 
+		var timeCompleted = new Date();
+		var timeSpent = timeCompleted.getTime() - timeStarted.getTime();
+
 		var response = new KMeansResponse();
 		response
 			.withMinX(this.data.metadata.minX)
 			.withMaxX(this.data.metadata.maxX)
 			.withMinY(this.data.metadata.minY)
 			.withMaxY(this.data.metadata.maxY)
+			.withClusterCoveragePercentage(100.00) // This is by default
+			.withTimeSpent(timeSpent)
 			.withXName(this.data.metadata.xName)
 			.withYName(this.data.metadata.yName)
 			.withTitle(this.data.metadata.title)
